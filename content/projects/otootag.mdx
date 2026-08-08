@@ -1,0 +1,57 @@
+---
+title: "OTOOTAĞ"
+slug: "otootag"
+role: "Founder & Full-stack — SaaS / ERP"
+color: "#2946D8"
+url: "https://otootag.com"
+github: ""
+tags: ["Next.js", "Flutter", "Go", "Neon"]
+images:
+  [
+    "/projects/otootag/01.png",
+    "/projects/otootag/02.png",
+    "/projects/otootag/03.png",
+  ]
+labels: ["public site — anasayfa", "B2B panel — Flutter", "parça detay / diyagram"]
+prjCode: "PRJ-01"
+urlLabel: "otootag.com"
+summary: "Otomotiv yedek parça için B2B/ERP SaaS platformu."
+steps:
+  - label: "01 · PROBLEM"
+    title: "Dağınık parça verisi"
+    body: "Türkiye pazarında OEM/araç uyumluluğu tutarsız; güvenilir katalog kaynağı yok."
+  - label: "02 · YAKLAŞIM"
+    title: "3 katman + veri hattı"
+    body: "Next.js public + Flutter B2B + Go backend tek monorepo'da; 7zap için scraping pipeline."
+  - label: "03 · SONUÇ"
+    title: "Test edilmiş güven"
+    body: "flutter drive + ChromeDriver ile yüzlerce route; Go smoke script'i gerçek bug'ları yakaladı."
+---
+
+## Problem
+
+Türkiye'deki otomotiv yedek parça pazarında OEM ve araç uyumluluk verisi son derece dağınık: bayiler, distribütörler ve son kullanıcılar için güvenilir, tek bir katalog kaynağı yok. Fiyatlandırma, stok ve uyumluluk bilgisi genelde Excel dosyaları ve telefon trafiğiyle yönetiliyor.
+
+**OTOOTAĞ**, bu boşluğu dolduran bir B2B/ERP SaaS platformu olarak kuruldu — parça kataloğu, sipariş akışı ve bayi yönetimini tek bir sistemde birleştiriyor.
+
+## Yaklaşım
+
+Proje üç katmandan oluşan tek bir monorepo olarak tasarlandı:
+
+- **Next.js** — herkese açık tanıtım / katalog sitesi (otootag.com)
+- **Flutter Web** — B2B bayi paneli (sipariş, stok, fiyatlandırma)
+- **Go** — merkezi backend, tek monolith mimari, REST API
+
+Veri katmanı için 7zap gibi kaynaklardan **scraping pipeline**'ları kuruldu; Opel/GM parça verisi TecDoc/EPC mantığına uygun şekilde normalize edilip **Neon (PostgreSQL)** üzerinde saklanıyor.
+
+## Test & Kalite
+
+Üç katman da uçtan uca test ediliyor:
+
+- **flutter drive + ChromeDriver** ile yüzlerce route'u kapsayan E2E harness
+- Go tarafında **bash smoke test** script'leri — gerçek prod ortamında hızlı doğrulama
+- Deploy öncesi otomatik regresyon kontrolleri
+
+## Sonuç
+
+Bugün OTOOTAĞ, gerçek bayilerin günlük olarak sipariş verdiği, canlı bir B2B/ERP platformu. Veri hattından arayüze kadar tek elden geliştirilip test edildi.

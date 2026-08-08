@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pınar — Freelance Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2F0; --paper2:#FFFFFF; --wash:#E9EBE6;
+    --ink:#17191D; --ink2:#2A2E34; --muted:#5F656D; --faint:#9CA1A7;
+    --line:#DDDED9; --line2:#C7C9C3; --dot:#CDCEC9;
+    --accent:#2946D8; --accent-2:#1D34A8; --accent-soft:#E9EDFB;
+    --display:'Archivo',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink); font-family:var(--body); -webkit-font-smoothing:antialiased; line-height:1.5; overflow-x:hidden}
+  /* animated soft aurora */
+  .aura{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .blob{position:absolute; border-radius:50%; filter:blur(72px); opacity:.62}
+  .b1{width:540px; height:540px; top:-140px; left:-90px;
+     background:radial-gradient(circle, rgba(41,70,216,.30), transparent 70%); animation:fl1 24s ease-in-out infinite}
+  .b2{width:480px; height:480px; top:14%; right:-140px;
+     background:radial-gradient(circle, rgba(139,92,246,.26), transparent 70%); animation:fl2 30s ease-in-out infinite}
+  .b3{width:460px; height:460px; bottom:-160px; left:24%;
+     background:radial-gradient(circle, rgba(20,175,150,.24), transparent 70%); animation:fl3 34s ease-in-out infinite}
+  .b4{width:400px; height:400px; top:44%; left:-120px;
+     background:radial-gradient(circle, rgba(244,114,140,.20), transparent 70%); animation:fl2 28s ease-in-out infinite}
+  @keyframes fl1{0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(60px,50px) scale(1.12)}}
+  @keyframes fl2{0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-70px,40px) scale(1.15)}}
+  @keyframes fl3{0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-60px) scale(1.1)}}
+  .wrap{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 40px}
+  a{color:inherit; text-decoration:none}
+  .code{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint)}
+
+  /* nav */
+  nav{position:fixed; top:0; left:0; right:0; z-index:40; display:flex; align-items:center; justify-content:space-between;
+    padding:16px 40px; background:rgba(241,242,240,.72); backdrop-filter:blur(10px); border-bottom:1px solid transparent; transition:.3s}
+  nav.scrolled{border-bottom-color:var(--line2)}
+  .brand{display:flex; align-items:center; gap:11px; font-family:var(--mono); font-weight:600; letter-spacing:.04em; font-size:15px}
+  .brand .dot{width:8px; height:8px; background:var(--accent); border-radius:50%}
+  .brand .tag{color:var(--faint); font-weight:400; font-size:12px}
+  .navlinks{display:flex; gap:32px; align-items:center}
+  .navlinks a{font-size:13px; color:var(--muted); transition:color .2s; position:relative}
+  .navlinks a::after{content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--accent); transition:width .28s}
+  .navlinks a:hover{color:var(--ink)} .navlinks a:hover::after{width:100%}
+  .nav-cta{padding:9px 16px; background:var(--ink); color:var(--paper)!important; border-radius:6px; font-family:var(--mono); font-size:12px; transition:.22s}
+  .nav-cta:hover{background:var(--accent)}
+  @media(max-width:760px){.navlinks{display:none}}
+
+  /* hero */
+  header{padding:172px 0 96px; position:relative}
+  .hero-grid{display:grid; grid-template-columns:1fr 280px; gap:60px; align-items:end}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr; gap:40px}}
+  .eyebrow{display:inline-flex; align-items:center; gap:12px; font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:26px}
+  .eyebrow .ln{width:32px; height:2px; background:var(--accent)}
+  h1{font-family:var(--display); font-weight:900; font-size:clamp(44px,7.6vw,98px); line-height:.94; letter-spacing:-.03em}
+  h1 .u{position:relative; white-space:nowrap}
+  h1 .u::after{content:""; position:absolute; left:0; right:0; bottom:.06em; height:6px; background:var(--accent); transform:scaleX(0); transform-origin:left; animation:draw 1s cubic-bezier(.2,.7,.2,1) .7s forwards}
+  @keyframes draw{to{transform:scaleX(1)}}
+  .lede{max-width:540px; margin-top:28px; font-size:18px; color:var(--muted); line-height:1.65}
+  .lede b{color:var(--ink); font-weight:600}
+  .hero-actions{display:flex; gap:12px; margin-top:36px; flex-wrap:wrap}
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:14px 22px; border-radius:8px; font-family:var(--mono); font-size:13px; transition:.24s; cursor:pointer; border:1px solid transparent}
+  .btn-primary{background:var(--accent); color:#fff; font-weight:500}
+  .btn-primary:hover{background:var(--accent-2); transform:translateY(-2px); box-shadow:0 12px 28px -10px rgba(41,70,216,.5)}
+  .btn-ghost{border-color:var(--line2); color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink); background:var(--paper2)}
+  .btn .arw{transition:transform .24s} .btn:hover .arw{transform:translateX(4px)}
+  /* legend card */
+  .legend{border:1px solid var(--line2); border-radius:12px; background:var(--paper2); overflow:hidden}
+  .legend .lh{padding:12px 16px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); display:flex; justify-content:space-between}
+  .legend .lr{display:flex; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line)}
+  .legend .lr:last-child{border-bottom:none}
+  .legend .k{font-family:var(--mono); font-size:12px; color:var(--accent); width:34px; flex:none}
+  .legend .t{font-size:13px; color:var(--ink)} .legend .t span{color:var(--muted)}
+
+  /* sections */
+  section{padding:92px 0; position:relative; z-index:1}
+  .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:8px}
+  .sec-idx{font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.08em}
+  .sec-title{font-family:var(--display); font-weight:900; font-size:clamp(26px,4vw,40px); letter-spacing:-.02em}
+  .sec-rule{flex:1; height:1px; background:var(--line2); align-self:center}
+  .sec-note{font-family:var(--mono); font-size:12px; color:var(--muted); margin:14px 0 44px; max-width:60ch}
+
+  /* work — index rows */
+  .row{border-top:1px solid var(--line2); transition:background .25s}
+  .row:last-of-type{border-bottom:1px solid var(--line2)}
+  .row-head{display:grid; grid-template-columns:70px 1fr auto 44px; align-items:center; gap:24px; padding:26px 16px; cursor:pointer}
+  @media(max-width:760px){.row-head{grid-template-columns:48px 1fr 34px; gap:14px} .row-head .r-meta{display:none}}
+  .row:hover{background:var(--paper2)}
+  .r-idx{font-family:var(--mono); font-size:13px; color:var(--faint); transition:color .25s}
+  .row:hover .r-idx{color:var(--rc,var(--accent))}
+  .r-title{font-family:var(--display); font-weight:700; font-size:clamp(22px,3vw,32px); letter-spacing:-.01em; position:relative; display:inline-block}
+  .r-title .role{display:block; font-family:var(--mono); font-weight:400; font-size:12px; color:var(--muted); letter-spacing:.02em; margin-top:6px}
+  .r-title .bar{position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--rc,var(--accent)); transition:width .3s}
+  .row:hover .r-title .bar{width:52px}
+  .r-meta{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; max-width:320px}
+  .pill{font-family:var(--mono); font-size:11px; padding:5px 10px; border:1px solid var(--line2); border-radius:5px; color:var(--muted)}
+  .r-toggle{width:34px; height:34px; border:1px solid var(--line2); border-radius:8px; display:grid; place-items:center; font-family:var(--mono); color:var(--ink); transition:.25s; justify-self:end}
+  .row:hover .r-toggle{border-color:var(--rc,var(--accent)); color:var(--rc,var(--accent))}
+  .r-toggle .pm{transition:transform .3s}
+  .row.open .r-toggle{background:var(--rc,var(--accent)); border-color:var(--rc,var(--accent)); color:#fff}
+  .row.open .r-toggle .pm{transform:rotate(45deg)}
+  .r-body{max-height:0; overflow:hidden; transition:max-height .6s ease}
+  .row.open .r-body{max-height:1140px}
+  .r-body-in{padding:8px 16px 42px; display:grid; grid-template-columns:1.5fr 1fr; gap:36px; align-items:start}
+  @media(max-width:820px){.r-body-in{grid-template-columns:1fr; gap:26px}}
+  .steps{display:flex; flex-direction:column; gap:22px}
+  .step{display:grid; grid-template-columns:64px 1fr; gap:18px}
+  .step .sk{font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:.08em; padding-top:3px}
+  .step h4{font-family:var(--display); font-weight:600; font-size:17px; margin-bottom:5px}
+  .step p{font-size:13.5px; color:var(--muted); line-height:1.65}
+  .r-diagram{border:1px solid var(--line); border-radius:12px; background:var(--paper2); padding:22px}
+  .r-diagram .dh{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:14px}
+  .lyr{display:flex; align-items:center; gap:12px; padding:10px 0; position:relative}
+  .lyr:not(:last-child)::after{content:""; position:absolute; left:5px; top:50%; height:100%; width:1px; background:var(--line2)}
+  .lyr .nd{width:11px; height:11px; border-radius:50%; border:2px solid var(--accent); background:var(--paper2); z-index:1; flex:none}
+  .lyr .lc{font-family:var(--mono); font-size:11px; color:var(--faint); width:26px; flex:none}
+  .lyr .ln2{font-size:13px} .lyr .ln2 span{color:var(--muted); font-size:12px}
+
+  /* screenshot frame (browser mockup) */
+  .shot{border:1px solid var(--line2); border-radius:12px; overflow:hidden; background:var(--paper2); box-shadow:0 20px 44px -30px rgba(23,25,29,.4)}
+  .shot-bar{display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--line); background:var(--wash)}
+  .shot-bar .dots{display:flex; gap:6px}
+  .shot-bar .dots i{width:10px; height:10px; border-radius:50%; background:var(--line2)}
+  .shot-bar .url{margin-left:8px; font-family:var(--mono); font-size:11px; color:var(--muted); background:var(--paper); border:1px solid var(--line); border-radius:5px; padding:4px 12px; flex:1; text-align:center; letter-spacing:.02em}
+  .shot-view{aspect-ratio:16/10; display:grid; place-items:center; text-align:center;
+    background:linear-gradient(135deg, rgba(41,70,216,.10), rgba(139,110,232,.08) 45%, rgba(76,190,178,.09));
+    position:relative}
+  .shot-view .ph{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.03em}
+  .shot-view .ph b{display:block; font-family:var(--display); font-weight:700; font-size:15px; color:var(--ink); margin-bottom:6px}
+  .shot-view::after{content:""; position:absolute; inset:14px; border:1px dashed var(--line2); border-radius:8px; pointer-events:none}
+  /* gradient variants for placeholder shots */
+  .gv-a{background:linear-gradient(135deg, rgba(41,70,216,.14), rgba(139,110,232,.10) 45%, rgba(76,190,178,.11))}
+  .gv-b{background:linear-gradient(135deg, rgba(139,110,232,.15), rgba(41,70,216,.09) 55%, rgba(76,190,178,.10))}
+  .gv-c{background:linear-gradient(135deg, rgba(76,190,178,.16), rgba(41,70,216,.10) 50%, rgba(139,110,232,.12))}
+  /* gallery */
+  .gallery{display:flex; flex-direction:column; gap:12px}
+  .g-thumbs{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+  .thumb{position:relative; aspect-ratio:16/10; border:1px solid var(--line2); border-radius:9px; overflow:hidden; cursor:pointer; padding:0; transition:.2s}
+  .thumb::after{content:""; position:absolute; inset:8px; border:1px dashed var(--line2); border-radius:6px; opacity:.6}
+  .thumb:hover{transform:translateY(-2px)}
+  .thumb.active{border-color:var(--rc,var(--accent)); box-shadow:0 0 0 2px color-mix(in srgb, var(--rc,var(--accent)) 22%, transparent)}
+  .thumb .tl{position:absolute; left:7px; bottom:6px; font-family:var(--mono); font-size:10px; color:var(--ink); background:rgba(255,255,255,.72); padding:2px 7px; border-radius:4px; z-index:1}
+
+  /* project links */
+  .links{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px}
+  .linkbtn{display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; padding:9px 14px; border:1px solid var(--line2); border-radius:7px; color:var(--ink); transition:.22s}
+  .linkbtn.live{background:var(--rc,var(--accent)); border-color:var(--rc,var(--accent)); color:#fff}
+  .linkbtn.live:hover{filter:brightness(.92)}
+  .linkbtn:not(.live):hover{border-color:var(--ink); background:var(--paper2)}
+  .linkbtn .ic{width:13px; height:13px; flex:none}
+
+  /* about / cv */
+  .about{display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start; margin-top:44px}
+  @media(max-width:820px){.about{grid-template-columns:1fr; gap:32px}}
+  .bio p{font-size:17px; color:var(--ink2); line-height:1.75; margin-bottom:18px} .bio p b{color:var(--ink)}
+  .how{margin-top:26px; display:flex; flex-direction:column; gap:14px}
+  .how .hrow{display:grid; grid-template-columns:30px 1fr; gap:14px; align-items:start}
+  .how .hn{font-family:var(--mono); font-size:12px; color:var(--accent); padding-top:2px}
+  .how .ht{font-size:14px; color:var(--muted); line-height:1.6} .how .ht b{color:var(--ink); font-weight:600}
+  .cv{border:1px solid var(--line2); border-radius:14px; background:var(--paper2); overflow:hidden}
+  .cv .cvh{padding:16px 20px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); display:flex; justify-content:space-between}
+  .cvrow{padding:15px 20px; border-bottom:1px solid var(--line); display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:baseline}
+  .cvrow .ck{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint)}
+  .cvrow .cv-v{font-size:14px; color:var(--ink)} .cvrow .cv-v span{display:block; color:var(--muted); font-size:12.5px; margin-top:3px}
+  .cv .cvfoot{padding:18px 20px}
+  .cv .cvfoot .btn{width:100%; justify-content:center}
+
+  /* stack */
+  .stack{border:1px solid var(--line2); border-radius:12px; overflow:hidden; background:var(--paper2)}
+  .srow{display:grid; grid-template-columns:180px 1fr; border-top:1px solid var(--line)}
+  .srow:first-child{border-top:none}
+  .srow .k{padding:20px 24px; font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--rc,var(--accent)); background:var(--wash)}
+  .srow .k .n{color:var(--faint)}
+  .srow .v{padding:20px 24px; display:flex; flex-wrap:wrap; gap:9px; align-items:center}
+  .chip{font-family:var(--mono); font-size:12.5px; color:var(--ink); padding:7px 12px; border:1px solid var(--line2); border-radius:6px; transition:.2s; background:var(--paper)}
+  .chip:hover{border-color:var(--rc,var(--accent)); color:var(--rc,var(--accent)); background:color-mix(in srgb, var(--rc,var(--accent)) 10%, var(--paper))}
+  @media(max-width:640px){.srow{grid-template-columns:1fr}}
+
+  /* services */
+  .svc{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media(max-width:760px){.svc{grid-template-columns:1fr}}
+  .scard{border:1px solid var(--line2); border-radius:14px; padding:34px 34px; background:var(--paper2); position:relative; overflow:hidden; transition:.3s}
+  .scard:hover{border-color:var(--accent); box-shadow:0 16px 40px -24px rgba(41,70,216,.35)}
+  .scard .sno{position:absolute; top:24px; right:28px; font-family:var(--display); font-weight:900; font-size:56px; color:var(--wash); line-height:1}
+  .scard h3{font-family:var(--display); font-weight:700; font-size:23px; margin-bottom:12px}
+  .scard p{color:var(--muted); font-size:14.5px; line-height:1.7}
+  .scard ul{list-style:none; margin-top:20px; display:flex; flex-direction:column; gap:9px}
+  .scard li{font-size:13.5px; display:flex; gap:11px; align-items:center}
+  .scard li::before{content:"→"; color:var(--accent); font-family:var(--mono)}
+
+  /* contact */
+  .contact{border:1px solid var(--line2); border-radius:18px; padding:66px 52px; text-align:center; background:linear-gradient(180deg,var(--paper2),var(--wash)); position:relative; overflow:hidden}
+  .contact::before{content:""; position:absolute; inset:0; background:radial-gradient(600px 300px at 50% -30%,var(--accent-soft),transparent 65%)}
+  .contact>*{position:relative}
+  .contact h2{font-family:var(--display); font-weight:900; font-size:clamp(30px,5vw,54px); letter-spacing:-.02em; line-height:1.02}
+  .contact p{color:var(--muted); margin:18px auto 32px; max-width:420px; font-size:16px}
+
+  /* footer title block */
+  footer{border-top:1px solid var(--line2); margin-top:36px}
+  .titleblock{display:grid; grid-template-columns:repeat(4,1fr)}
+  .tb{border-right:1px solid var(--line); padding:20px 24px}
+  .tb:last-child{border-right:none}
+  .tb .k{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint)}
+  .tb .val{font-family:var(--mono); font-size:13px; color:var(--ink); margin-top:7px}
+  .tb .val.a{color:var(--accent)}
+  @media(max-width:760px){.titleblock{grid-template-columns:repeat(2,1fr)} .tb:nth-child(2){border-right:none}}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+  .reveal.d1{transition-delay:.07s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.21s}
+  @keyframes rise{from{opacity:0; transform:translateY(26px)} to{opacity:1; transform:none}}
+  .h-anim{opacity:0; animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .a1{animation-delay:.05s}.a2{animation-delay:.18s}.a3{animation-delay:.34s}.a4{animation-delay:.5s}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important} .reveal{opacity:1; transform:none} h1 .u::after{transform:scaleX(1)} html{scroll-behavior:auto}}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="aura" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></div>
+
+<nav id="nav">
+  <a class="brand" href="#top"><span class="dot"></span>Pınar<span class="tag">/ dev</span></a>
+  <div class="navlinks">
+    <a href="#work">Projeler</a>
+    <a href="#stack">Stack</a>
+    <a href="#services">Hizmetler</a>
+    <a href="#about">Hakkımda</a>
+    <a class="nav-cta" href="#contact">İletişim</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow h-anim a1"><span class="ln"></span>FREELANCE DEVELOPER · TR</div>
+        <h1 class="h-anim a2">Fikirden<br><span class="u">production'a.</span></h1>
+        <p class="lede h-anim a3">
+          Ben Pınar. <b>Next.js, Flutter ve Go</b> ile uçtan uca SaaS ürünleri ve
+          ölçeklenebilir web sistemleri kuruyorum. Amiral gemim <b>OTOOTAĞ</b> —
+          otomotiv yedek parça için B2B/ERP platformu.
+        </p>
+        <div class="hero-actions h-anim a4">
+          <a class="btn btn-primary" href="#work">Projeleri incele <span class="arw">→</span></a>
+          <a class="btn btn-ghost" href="#contact">Birlikte çalışalım</a>
+        </div>
+      </div>
+      <div class="legend h-anim a4">
+        <div class="lh"><span>INDEX</span><span>2026</span></div>
+        <div class="lr"><span class="k">01</span><span class="t">OTOOTAĞ <span>· SaaS/ERP</span></span></div>
+        <div class="lr"><span class="k">02</span><span class="t">Web Development</span></div>
+        <div class="lr"><span class="k">03</span><span class="t">Meta Ads</span></div>
+        <div class="lr"><span class="k">→</span><span class="t">Açık işlere uygun</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-idx">01 /</span><span class="sec-title">Seçili İşler</span><span class="sec-rule"></span>
+    </div>
+    <p class="sec-note reveal">Her satırı aç → problem, yaklaşım ve sonucu gör.</p>
+
+    <div class="index">
+      <!-- 01 -->
+      <article class="row reveal" id="r1" style="--rc:#2946D8">
+        <div class="row-head" data-toggle="r1">
+          <span class="r-idx">PRJ-01</span>
+          <span class="r-title">OTOOTAĞ<span class="role">Founder & Full-stack — SaaS / ERP · otootag.com</span><span class="bar"></span></span>
+          <span class="r-meta"><span class="pill">Next.js</span><span class="pill">Flutter</span><span class="pill">Go</span><span class="pill">Neon</span></span>
+          <span class="r-toggle"><span class="pm">+</span></span>
+        </div>
+        <div class="r-body"><div class="r-body-in">
+          <div class="gallery">
+            <div class="shot">
+              <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">otootag.com</span></div>
+              <div class="shot-view gv-a"><span class="ph"><b>PRJ-01 · görsel 01 / 3</b>görselini buraya koy — 16:10</span></div>
+            </div>
+            <div class="g-thumbs">
+              <button class="thumb gv-a active" data-g="gv-a" data-l="<b>PRJ-01 · görsel 01 / 3</b>public site — anasayfa"><span class="tl">01</span></button>
+              <button class="thumb gv-b" data-g="gv-b" data-l="<b>PRJ-01 · görsel 02 / 3</b>B2B panel — Flutter"><span class="tl">02</span></button>
+              <button class="thumb gv-c" data-g="gv-c" data-l="<b>PRJ-01 · görsel 03 / 3</b>parça detay / diyagram"><span class="tl">03</span></button>
+            </div>
+          </div>
+          <div class="r-side">
+            <div class="links">
+              <a class="linkbtn live" href="https://otootag.com" target="_blank" rel="noopener">Canlı site →</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+            <div class="steps">
+              <div class="step"><div class="sk">01 · PROBLEM</div><div><h4>Dağınık parça verisi</h4><p>Türkiye pazarında OEM/araç uyumluluğu tutarsız; güvenilir katalog kaynağı yok.</p></div></div>
+              <div class="step"><div class="sk">02 · YAKLAŞIM</div><div><h4>3 katman + veri hattı</h4><p>Next.js public + Flutter B2B + Go backend tek monorepo'da; 7zap için scraping pipeline.</p></div></div>
+              <div class="step"><div class="sk">03 · SONUÇ</div><div><h4>Test edilmiş güven</h4><p>flutter drive + ChromeDriver ile yüzlerce route; Go smoke script'i gerçek bug'ları yakaladı.</p></div></div>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+      <!-- 02 -->
+      <article class="row reveal d1" id="r2" style="--rc:#0E9F6E">
+        <div class="row-head" data-toggle="r2">
+          <span class="r-idx">PRJ-02</span>
+          <span class="r-title">Web Development<span class="role">Freelance — kurumsal & landing</span><span class="bar"></span></span>
+          <span class="r-meta"><span class="pill">Next.js</span><span class="pill">Tailwind</span><span class="pill">SEO</span></span>
+          <span class="r-toggle"><span class="pm">+</span></span>
+        </div>
+        <div class="r-body"><div class="r-body-in">
+          <div class="gallery">
+            <div class="shot">
+              <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">müşteri-sitesi.com</span></div>
+              <div class="shot-view gv-a"><span class="ph"><b>PRJ-02 · görsel 01 / 3</b>görselini buraya koy — 16:10</span></div>
+            </div>
+            <div class="g-thumbs">
+              <button class="thumb gv-a active" data-g="gv-a" data-l="<b>PRJ-02 · görsel 01 / 3</b>anasayfa"><span class="tl">01</span></button>
+              <button class="thumb gv-b" data-g="gv-b" data-l="<b>PRJ-02 · görsel 02 / 3</b>iç sayfa / mobil"><span class="tl">02</span></button>
+              <button class="thumb gv-c" data-g="gv-c" data-l="<b>PRJ-02 · görsel 03 / 3</b>SEO / performans"><span class="tl">03</span></button>
+            </div>
+          </div>
+          <div class="r-side">
+            <div class="links">
+              <a class="linkbtn live" href="#" target="_blank" rel="noopener">Canlı örnek →</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noopener">Vaka çalışması →</a>
+            </div>
+            <div class="steps">
+              <div class="step"><div class="sk">KAPSAM</div><div><h4>Hızlı, ölçülebilir siteler</h4><p>Kurumsal tanıtım ve landing sayfaları — performans, erişilebilirlik ve teknik SEO odaklı.</p></div></div>
+              <div class="step"><div class="sk">YÖNTEM</div><div><h4>Denetimli teslim</h4><p>Screaming Frog ile SEO denetimi, temiz commit akışı ve Vercel deploy.</p></div></div>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+      <!-- 03 -->
+      <article class="row reveal d2" id="r3" style="--rc:#8B5CF6">
+        <div class="row-head" data-toggle="r3">
+          <span class="r-idx">PRJ-03</span>
+          <span class="r-title">Meta Ads / Performance<span class="role">Freelance — reklam & funnel</span><span class="bar"></span></span>
+          <span class="r-meta"><span class="pill">Meta Ads</span><span class="pill">Pixel</span><span class="pill">Funnel</span></span>
+          <span class="r-toggle"><span class="pm">+</span></span>
+        </div>
+        <div class="r-body"><div class="r-body-in">
+          <div class="gallery">
+            <div class="shot">
+              <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">reklam · kampanya raporu</span></div>
+              <div class="shot-view gv-a"><span class="ph"><b>PRJ-03 · görsel 01 / 3</b>reklam paneli görselini buraya koy</span></div>
+            </div>
+            <div class="g-thumbs">
+              <button class="thumb gv-a active" data-g="gv-a" data-l="<b>PRJ-03 · görsel 01 / 3</b>reklam paneli"><span class="tl">01</span></button>
+              <button class="thumb gv-b" data-g="gv-b" data-l="<b>PRJ-03 · görsel 02 / 3</b>reklam kreatifi"><span class="tl">02</span></button>
+              <button class="thumb gv-c" data-g="gv-c" data-l="<b>PRJ-03 · görsel 03 / 3</b>sonuç / metrikler"><span class="tl">03</span></button>
+            </div>
+          </div>
+          <div class="r-side">
+            <div class="links">
+              <a class="linkbtn live" href="https://instagram.com/otootag" target="_blank" rel="noopener">@otootag →</a>
+              <a class="linkbtn" href="#" target="_blank" rel="noopener">Sonuçlar →</a>
+            </div>
+            <div class="steps">
+              <div class="step"><div class="sk">KAPSAM</div><div><h4>Dönüşüm odaklı reklam</h4><p>Facebook & Instagram kampanya kurulumu, Pixel entegrasyonu ve funnel tasarımı.</p></div></div>
+              <div class="step"><div class="sk">KANIT</div><div><h4>Sahada uygulandı</h4><p>OTOOTAĞ üzerinde bizzat kurgulanan, sonuç odaklı bir hizmet.</p></div></div>
+            </div>
+          </div>
+        </div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">02 /</span><span class="sec-title">Teknik Spesifikasyon</span><span class="sec-rule"></span></div>
+    <p class="sec-note reveal">Uçtan uca tek elden: frontend'den veri hattına.</p>
+    <div class="stack reveal">
+      <div class="srow" style="--rc:#2946D8"><div class="k"><span class="n">FE/ </span>Frontend</div><div class="v"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Flutter Web</span><span class="chip">Tailwind</span><span class="chip">TypeScript</span></div></div>
+      <div class="srow" style="--rc:#0E9F6E"><div class="k"><span class="n">BE/ </span>Backend</div><div class="v"><span class="chip">Go</span><span class="chip">REST API</span><span class="chip">Monolith arch</span></div></div>
+      <div class="srow" style="--rc:#8B5CF6"><div class="k"><span class="n">DB/ </span>Data</div><div class="v"><span class="chip">PostgreSQL</span><span class="chip">Neon</span><span class="chip">Scraping pipelines</span><span class="chip">TecDoc/EPC logic</span></div></div>
+      <div class="srow" style="--rc:#E8973A"><div class="k"><span class="n">QA/ </span>Testing</div><div class="v"><span class="chip">flutter drive</span><span class="chip">ChromeDriver</span><span class="chip">Bash smoke tests</span><span class="chip">E2E harness</span></div></div>
+      <div class="srow" style="--rc:#E85D75"><div class="k"><span class="n">OPS/</span>Environment</div><div class="v"><span class="chip">WSL · Ubuntu</span><span class="chip">Monorepo</span><span class="chip">Git</span><span class="chip">Vercel</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">03 /</span><span class="sec-title">Hizmetler</span><span class="sec-rule"></span></div>
+    <div class="svc" style="margin-top:44px">
+      <div class="scard reveal d1"><span class="sno">01</span><h3>Web & SaaS Geliştirme</h3>
+        <p>Tanıtım sitesinden tam ölçekli SaaS ürününe; tasarım, geliştirme ve deploy tek elden.</p>
+        <ul><li>Kurumsal & landing siteleri</li><li>Full-stack SaaS / dashboard</li><li>Teknik SEO denetimi</li></ul></div>
+      <div class="scard reveal d2"><span class="sno">02</span><h3>Meta Reklam Yönetimi</h3>
+        <p>Facebook & Instagram reklamlarının kurulumu, optimizasyonu ve dönüşüm odaklı funnel tasarımı.</p>
+        <ul><li>Kampanya kurulumu & Pixel</li><li>Performans optimizasyonu</li><li>Aylık raporlama</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / CV -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">04 /</span><span class="sec-title">Hakkımda</span><span class="sec-rule"></span></div>
+    <div class="about">
+      <div class="bio reveal">
+        <p>Merhaba, ben <b>Pınar</b>. Freelance full-stack developer'ım; işi fikir
+           aşamasından canlı ürüne kadar tek başıma taşıyabiliyorum — tasarım,
+           geliştirme, test ve deploy.</p>
+        <p>Şu an enerjimin çoğu <b>OTOOTAĞ</b>'da: otomotiv yedek parça için
+           kurduğum B2B/ERP SaaS platformu. Next.js, Flutter ve Go'yu tek bir
+           monorepo'da çalıştırıyor, üç katmanı da uçtan uca test ediyorum.</p>
+        <div class="how">
+          <div class="hrow"><span class="hn">01</span><span class="ht"><b>Uçtan uca sahiplenirim.</b> Frontend'den veri hattına kadar tek muhatap.</span></div>
+          <div class="hrow"><span class="hn">02</span><span class="ht"><b>Test odaklı çalışırım.</b> Teslim ettiğim şey gerçekten çalışır — smoke/E2E harness'lerle.</span></div>
+          <div class="hrow"><span class="hn">03</span><span class="ht"><b>Şeffaf ilerlerim.</b> Temiz commit akışı, net raporlama, sürprizsiz teslim.</span></div>
+        </div>
+      </div>
+      <aside class="cv reveal d1">
+        <div class="cvh"><span>KÜNYE</span><span>CV</span></div>
+        <div class="cvrow"><span class="ck">Rol</span><span class="cv-v">Freelance Developer<span>Full-stack · SaaS</span></span></div>
+        <div class="cvrow"><span class="ck">Konum</span><span class="cv-v">Türkiye<span>Remote çalışır</span></span></div>
+        <div class="cvrow"><span class="ck">Odak</span><span class="cv-v">Next.js · Flutter · Go<span>PostgreSQL / Neon</span></span></div>
+        <div class="cvrow"><span class="ck">Öne çıkan</span><span class="cv-v">OTOOTAĞ<span>B2B/ERP SaaS · kurucu</span></span></div>
+        <div class="cvrow"><span class="ck">Diller</span><span class="cv-v">Türkçe · İngilizce</span></div>
+        <div class="cvfoot"><a class="btn btn-primary" href="/cv-pinar.pdf" download>CV indir (PDF) ↓</a></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <h2>Bir sonraki sistemi<br>birlikte kuralım.</h2>
+      <p>Yeni bir proje, bir SaaS fikri ya da reklam kampanyası — konuşalım.</p>
+      <a class="btn btn-primary" href="mailto:pinar@example.com">İletişime geç <span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    <div class="titleblock">
+      <div class="tb"><div class="k">Sheet</div><div class="val a">01 / 01</div></div>
+      <div class="tb"><div class="k">Project</div><div class="val">PNR-PORTFOLIO</div></div>
+      <div class="tb"><div class="k">Revision</div><div class="val">2026.0</div></div>
+      <div class="tb"><div class="k">Scale</div><div class="val">1 : 1</div></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('.row-head').forEach(h=>h.addEventListener('click',()=>document.getElementById(h.dataset.toggle).classList.toggle('open')));
+  // gallery thumbnail switching
+  document.querySelectorAll('.gallery').forEach(g=>{
+    const main=g.querySelector('.shot-view'), cap=g.querySelector('.shot-view .ph');
+    g.querySelectorAll('.thumb').forEach(t=>t.addEventListener('click',()=>{
+      g.querySelectorAll('.thumb').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      main.className='shot-view '+t.dataset.g;
+      cap.innerHTML=t.dataset.l;
+    }));
+  });
+</script>
+</body>
+</html>
