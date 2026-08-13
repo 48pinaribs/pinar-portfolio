@@ -12,7 +12,7 @@ images:
     "/projects/otootag/02.png",
     "/projects/otootag/03.png",
   ]
-labels: ["public site — anasayfa", "katalog — ürün listesi", "parça detay sayfası"]
+labels: ["public site — anasayfa", "B2B/ERP panel — Flutter", "bayi yönetimi & harita"]
 prjCode: "PRJ-01"
 urlLabel: "otootag.com"
 summary: "Otomotiv yedek parça için B2B/ERP SaaS platformu."
@@ -39,7 +39,7 @@ Türkiye'deki otomotiv yedek parça pazarında OEM ve araç uyumluluk verisi son
 Proje üç katmandan oluşan tek bir monorepo olarak tasarlandı:
 
 - **Next.js** — herkese açık tanıtım / katalog sitesi (otootag.com)
-- **Flutter Web** — B2B bayi paneli (sipariş, stok, fiyatlandırma)
+- **Flutter Web** — B2B/ERP bayi paneli (app.otootag.com): sipariş, stok, cari/fatura/kasa, bayi yönetimi ve harita üzerinden bayi takibi
 - **Go** — merkezi backend, tek monolith mimari, REST API
 
 Veri katmanı için 7zap gibi kaynaklardan **scraping pipeline**'ları kuruldu; Opel/GM parça verisi TecDoc/EPC mantığına uygun şekilde normalize edilip **Neon (PostgreSQL)** üzerinde saklanıyor.
