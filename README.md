@@ -50,9 +50,9 @@ Yeni proje eklemek için: `content/projects/` altına yeni bir `.mdx` dosyası +
 
 ## Görseller
 
-`public/projects/<slug>/01.png..03.png` şu an **placeholder** (üretim script'i: `scripts/gen-placeholders.mjs`). Gerçek proje görselleriyle değiştirin — dosya adları ve boyut oranı (16:10) aynı kalırsa otomatik uyar. Bir görsel eksik/bozuksa galeri otomatik olarak zarif bir gradient placeholder gösterir (bkz. `src/components/Gallery.tsx`).
+`public/projects/<slug>/01.png..03.png` gerçek proje ekran görüntüleridir (tarayıcıyla siteye girip alınmıştır). Dosya adları ve boyut oranı (16:10) aynı kalırsa galeri otomatik uyar. Bir görsel eksik/bozuksa galeri otomatik olarak zarif bir gradient placeholder gösterir (bkz. `src/components/Gallery.tsx`).
 
-`public/cv-pinar.pdf` de bir placeholder'dır — gerçek CV PDF'iniz ile değiştirin.
+`public/cv-pinar.pdf` gerçek CV dosyasıdır.
 
 ## Tasarım referansı
 

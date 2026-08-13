@@ -42,11 +42,9 @@ export default function Hero() {
             </div>
             <div className="lr">
               <span className="k">02</span>
-              <span className="t">Web Development</span>
-            </div>
-            <div className="lr">
-              <span className="k">03</span>
-              <span className="t">Meta Ads</span>
+              <span className="t">
+                Köyümüzden Sofranıza <span>· E-ticaret</span>
+              </span>
             </div>
             <div className="lr">
               <span className="k">→</span>

@@ -23,7 +23,7 @@
   /* project / category colors */
   --rc-fe: #2946d8; /* OTOOTAĞ / FE — cobalt */
   --rc-be: #0e9f6e; /* Web dev / BE — green */
-  --rc-db: #8b5cf6; /* Meta Ads / DB — purple */
+  --rc-db: #8b5cf6; /* DB — purple */
   --rc-qa: #e8973a; /* QA — amber */
   --rc-ops: #e85d75; /* OPS — coral */
 
@@ -942,70 +942,6 @@ section {
   .srow {
     grid-template-columns: 1fr;
   }
-}
-
-/* ---------- services ---------- */
-.svc {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-@media (max-width: 760px) {
-  .svc {
-    grid-template-columns: 1fr;
-  }
-}
-.scard {
-  border: 1px solid var(--line2);
-  border-radius: 14px;
-  padding: 34px 34px;
-  background: var(--paper2);
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s;
-}
-.scard:hover {
-  border-color: var(--accent);
-  box-shadow: 0 16px 40px -24px rgba(41, 70, 216, 0.35);
-}
-.scard .sno {
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 56px;
-  color: var(--wash);
-  line-height: 1;
-}
-.scard h3 {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 23px;
-  margin-bottom: 12px;
-}
-.scard p {
-  color: var(--muted);
-  font-size: 14.5px;
-  line-height: 1.7;
-}
-.scard ul {
-  list-style: none;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-.scard li {
-  font-size: 13.5px;
-  display: flex;
-  gap: 11px;
-  align-items: center;
-}
-.scard li::before {
-  content: "→";
-  color: var(--accent);
-  font-family: var(--mono);
 }
 
 /* ---------- contact ---------- */

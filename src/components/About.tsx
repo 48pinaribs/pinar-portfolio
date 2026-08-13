@@ -5,7 +5,7 @@ export default function About() {
     <section id="about">
       <div className="wrap">
         <Reveal className="sec-head">
-          <span className="sec-idx">04 /</span>
+          <span className="sec-idx">03 /</span>
           <span className="sec-title">Hakkımda</span>
           <span className="sec-rule" />
         </Reveal>
