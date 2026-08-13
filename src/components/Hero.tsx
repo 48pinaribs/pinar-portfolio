@@ -14,10 +14,10 @@ export default function Hero() {
               <span className="u">production&apos;a.</span>
             </h1>
             <p className="lede h-anim a3">
-              Ben Pınar. <b>Next.js, Flutter ve Go</b> ile uçtan uca SaaS
-              platformları ve e-ticaret sistemleri kuruyorum — pazaryerinden
-              bayi paneline, konsept sitesinden canlı satışa kadar fikri
-              production&apos;a taşıyorum.
+              Ben Pınar. Bir fikri, <b>gerçek kullanıcıların güvendiği canlı
+              bir ürüne</b> dönüştürmeyi seviyorum — tasarımdan teste,
+              deploy&apos;dan canlı kullanıma kadar sürecin tamamını tek
+              başıma yürütüyorum.
             </p>
             <div className="hero-actions h-anim a4">
               <a className="btn btn-primary" href="#work">
