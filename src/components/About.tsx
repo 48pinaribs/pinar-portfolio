@@ -18,10 +18,12 @@ export default function About() {
               taşıyabiliyorum — tasarım, geliştirme, test ve deploy.
             </p>
             <p>
-              Şu an enerjimin çoğu <b>OTOOTAĞ</b>&apos;da: otomotiv yedek parça
-              için kurduğum B2B/ERP SaaS platformu. Next.js, Flutter ve
-              Go&apos;yu tek bir monorepo&apos;da çalıştırıyor, üç katmanı da
-              uçtan uca test ediyorum.
+              Teknoloji hızlı değişiyor, ben de buna göre çalışırım: yeni bir
+              framework, yeni bir araç ya da yeni bir problemle
+              karşılaştığımda hızlıca öğrenip üretime katarım. Günlük iş
+              akışımda <b>yapay zekâ destekli geliştirme araçlarını</b> aktif
+              olarak kullanıyorum — hızlı prototipleme, kod incelemesi ve
+              dokümantasyon gibi alanlarda verimliliğimi artırıyorlar.
             </p>
             <div className="how">
               <div className="hrow">

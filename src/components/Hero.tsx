@@ -15,9 +15,9 @@ export default function Hero() {
             </h1>
             <p className="lede h-anim a3">
               Ben Pınar. <b>Next.js, Flutter ve Go</b> ile uçtan uca SaaS
-              ürünleri ve ölçeklenebilir web sistemleri kuruyorum. Amiral
-              gemim <b>OTOOTAĞ</b> — otomotiv yedek parça için B2B/ERP
-              platformu.
+              platformları ve e-ticaret sistemleri kuruyorum — pazaryerinden
+              bayi paneline, konsept sitesinden canlı satışa kadar fikri
+              production&apos;a taşıyorum.
             </p>
             <div className="hero-actions h-anim a4">
               <a className="btn btn-primary" href="#work">
