@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const LINKS = [
-  { href: "#work", label: "Projeler" },
-  { href: "#stack", label: "Stack" },
-  { href: "#about", label: "Hakkımda" },
+  { href: "/#work", label: "Projeler" },
+  { href: "/#stack", label: "Stack" },
+  { href: "/#about", label: "Hakkımda" },
 ];
 
 export default function Nav() {
@@ -20,19 +21,19 @@ export default function Nav() {
 
   return (
     <nav className={`sitenav${scrolled ? " scrolled" : ""}`}>
-      <a className="brand" href="#top">
+      <Link className="brand" href="/#top">
         <span className="dot" />
         Pınar<span className="tag">/ dev</span>
-      </a>
+      </Link>
       <div className="navlinks">
         {LINKS.map((l) => (
-          <a key={l.href} href={l.href}>
+          <Link key={l.href} href={l.href}>
             {l.label}
-          </a>
+          </Link>
         ))}
-        <a className="nav-cta" href="#contact">
+        <Link className="nav-cta" href="/#contact">
           İletişim
-        </a>
+        </Link>
       </div>
     </nav>
   );
