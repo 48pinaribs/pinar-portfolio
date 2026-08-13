@@ -37,11 +37,17 @@ export default function Hero() {
             <div className="lr">
               <span className="k">01</span>
               <span className="t">
-                OTOOTAĞ <span>· SaaS/ERP</span>
+                OTOOTAĞ <span>· Pazaryeri</span>
               </span>
             </div>
             <div className="lr">
               <span className="k">02</span>
+              <span className="t">
+                OTOOTAĞ Bayi Paneli <span>· B2B/ERP</span>
+              </span>
+            </div>
+            <div className="lr">
+              <span className="k">03</span>
               <span className="t">
                 Köyümüzden Sofranıza <span>· E-ticaret</span>
               </span>

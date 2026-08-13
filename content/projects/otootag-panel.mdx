@@ -1,0 +1,46 @@
+---
+title: "OTOOTAĞ Bayi Paneli"
+slug: "otootag-panel"
+role: "Founder & Full-stack — B2B/ERP Paneli"
+color: "#2946D8"
+url: "https://app.otootag.com"
+github: ""
+tags: ["Flutter", "Go", "Neon"]
+images:
+  [
+    "/projects/otootag-panel/01.png",
+    "/projects/otootag-panel/02.png",
+  ]
+labels: ["ana sayfa — dashboard", "katalog — ürün listesi", "stok yönetimi (yakında)"]
+prjCode: "PRJ-02"
+urlLabel: "app.otootag.com"
+summary: "Bayiler için Flutter Web B2B/ERP paneli — sipariş, stok, cari/fatura/kasa."
+steps:
+  - label: "01 · KAPSAM"
+    title: "Tam kapsamlı bayi ERP'i"
+    body: "Katalog, pazaryeri, siparişler, teklifler, faturalar, cariler, kargo, bayi yönetimi tek panelde."
+  - label: "02 · YAKLAŞIM"
+    title: "Flutter Web + Go"
+    body: "OTOOTAĞ'ın aynı Go backend ve Neon veri hattını kullanan ayrı bir Flutter Web istemcisi."
+  - label: "03 · SONUÇ"
+    title: "Test edilmiş güven"
+    body: "flutter drive + ChromeDriver ile yüzlerce route; Go smoke script'i gerçek bug'ları yakaladı."
+---
+
+## Kapsam
+
+**OTOOTAĞ Bayi Paneli**, otomotiv yedek parça bayilerinin günlük operasyonunu tek yerden yönettiği bir B2B/ERP uygulaması: katalog ve pazaryeri, sipariş & teklif yönetimi, faturalar, cariler, kargo takibi, ithalat takibi, stok/envanter, şasi-VIN sorgulama ve bayi yönetimi (harita üzerinden bayi takibi dahil).
+
+## Yaklaşım
+
+Panel, [OTOOTAĞ](/work/otootag) pazaryerinin aynı **Go** backend'i ve **Neon (PostgreSQL)** veri hattını kullanan ayrı bir **Flutter Web** istemcisi olarak geliştirildi — bayiler cari, fatura, kasa, stok, garanti, OEM katalog ve döviz fiyatlandırma sistemine tek panelden erişiyor.
+
+## Test & Kalite
+
+- **flutter drive + ChromeDriver** ile yüzlerce route'u kapsayan E2E harness
+- Go tarafında **bash smoke test** script'leri — gerçek prod ortamında hızlı doğrulama
+- Deploy öncesi otomatik regresyon kontrolleri
+
+## Sonuç
+
+Bugün panel, gerçek bayilerin günlük olarak sipariş verdiği, canlı bir B2B/ERP sistemi.
