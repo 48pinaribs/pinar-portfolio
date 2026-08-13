@@ -27,9 +27,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pınar — Freelance Developer",
+  title: "Pınar — Full-Stack Developer",
   description:
-    "Next.js, Flutter ve Go ile uçtan uca SaaS ürünleri ve ölçeklenebilir web sistemleri. Freelance full-stack developer, TR.",
+    "Next.js, Flutter ve Go ile uçtan uca SaaS ürünleri ve ölçeklenebilir web sistemleri. Full-stack developer, TR.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

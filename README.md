@@ -1,4 +1,4 @@
-# Pınar — Freelance Developer Portfolio
+# Pınar — Full-Stack Developer Portfolio
 
 Bağımsız kişisel portföy sitesi. Next.js (App Router) + TypeScript + Tailwind CSS + MDX ile kurulu.
 

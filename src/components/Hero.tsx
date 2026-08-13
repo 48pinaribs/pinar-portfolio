@@ -6,7 +6,7 @@ export default function Hero() {
           <div>
             <div className="eyebrow h-anim a1">
               <span className="ln" />
-              FREELANCE DEVELOPER · TR
+              FULL-STACK DEVELOPER · TR
             </div>
             <h1 className="h1 h-anim a2">
               Fikirden

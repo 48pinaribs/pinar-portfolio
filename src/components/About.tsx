@@ -13,8 +13,8 @@ export default function About() {
         <div className="about">
           <Reveal as="div" className="bio">
             <p>
-              Merhaba, ben <b>Pınar</b>. Freelance full-stack developer&apos;ım;
-              işi fikir aşamasından canlı ürüne kadar tek başıma
+              Merhaba, ben <b>Pınar</b>. Full-stack developer&apos;ım; işi
+              fikir aşamasından canlı ürüne kadar tek başıma
               taşıyabiliyorum — tasarım, geliştirme, test ve deploy.
             </p>
             <p>
@@ -56,8 +56,8 @@ export default function About() {
             <div className="cvrow">
               <span className="ck">Rol</span>
               <span className="cv-v">
-                Freelance Developer
-                <span>Full-stack · SaaS</span>
+                Full-Stack Developer
+                <span>SaaS · Web</span>
               </span>
             </div>
             <div className="cvrow">
