@@ -49,7 +49,12 @@ export function getAllProjects(): Project[] {
 
   // Preserve a stable, intentional order matching PRJ-01/02/03 rather than
   // relying purely on alphabetical filename sort.
-  const order = ["otootag.mdx", "web-development.mdx", "meta-ads.mdx"];
+  const order = [
+    "otootag.mdx",
+    "web-development.mdx",
+    "meta-ads.mdx",
+    "koyumuzden-sofraniza.mdx",
+  ];
   const ordered = order.filter((f) => files.includes(f));
   const rest = files.filter((f) => !order.includes(f));
 
