@@ -13,19 +13,35 @@ const ROWS: StackRow[] = [
     code: "FE/",
     label: "Frontend",
     color: "#2946D8",
-    chips: ["Next.js", "React", "Flutter Web", "Tailwind", "TypeScript"],
+    chips: [
+      "Next.js",
+      "React",
+      "Flutter Web",
+      "Redux Toolkit",
+      "Ant Design",
+      "Leaflet",
+      "Tailwind",
+      "TypeScript",
+    ],
   },
   {
     code: "BE/",
     label: "Backend",
     color: "#0E9F6E",
-    chips: ["Go", "REST API", "Monolith arch"],
+    chips: ["Go", ".NET / ASP.NET Core", "REST API", "JWT Auth", "Monolith arch"],
   },
   {
     code: "DB/",
     label: "Data",
     color: "#8B5CF6",
-    chips: ["PostgreSQL", "Neon", "Scraping pipelines", "TecDoc/EPC logic"],
+    chips: [
+      "PostgreSQL",
+      "Neon",
+      "Supabase",
+      "Entity Framework Core",
+      "Scraping pipelines",
+      "TecDoc/EPC logic",
+    ],
   },
   {
     code: "QA/",
@@ -37,7 +53,7 @@ const ROWS: StackRow[] = [
     code: "OPS/",
     label: "Environment",
     color: "#E85D75",
-    chips: ["WSL · Ubuntu", "Monorepo", "Git", "Vercel"],
+    chips: ["WSL · Ubuntu", "Monorepo", "Docker", "Git", "Vercel", "Render"],
   },
 ];
 

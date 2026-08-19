@@ -72,8 +72,8 @@ export default function About() {
             <div className="cvrow">
               <span className="ck">Odak</span>
               <span className="cv-v">
-                Next.js · Flutter · Go
-                <span>PostgreSQL / Neon</span>
+                Next.js · Flutter · Go / .NET
+                <span>PostgreSQL · Neon / Supabase</span>
               </span>
             </div>
             <div className="cvrow">

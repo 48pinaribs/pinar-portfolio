@@ -53,6 +53,12 @@ export default function Hero() {
               </span>
             </div>
             <div className="lr">
+              <span className="k">04</span>
+              <span className="t">
+                AcademiaX <span>· Üniversite Bilgi Sistemi</span>
+              </span>
+            </div>
+            <div className="lr">
               <span className="k">→</span>
               <span className="t">Açık işlere uygun</span>
             </div>
