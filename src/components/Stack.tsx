@@ -28,7 +28,15 @@ const ROWS: StackRow[] = [
     code: "BE/",
     label: "Backend",
     color: "#0E9F6E",
-    chips: ["Go", ".NET / ASP.NET Core", "REST API", "JWT Auth", "Monolith arch"],
+    chips: [
+      "Go",
+      ".NET / ASP.NET Core",
+      "REST API",
+      "N-Tier Architecture",
+      "JWT / RBAC",
+      "Iyzipay",
+      "Monolith arch",
+    ],
   },
   {
     code: "DB/",
