@@ -1,0 +1,45 @@
+---
+title: "AcademiaX"
+slug: "academiax"
+role: "Full-stack — Üniversite Bilgi Sistemi"
+color: "#6E3F92"
+url: "https://academiax-tau.vercel.app/"
+github: ""
+tags: [".NET", "React", "PostgreSQL"]
+images:
+  [
+    "/projects/academiax/01.png",
+    "/projects/academiax/02.png",
+    "/projects/academiax/03.png",
+  ]
+labels: ["öğrenci paneli — dashboard", "not & devam takibi", "kampüs ring — canlı takip"]
+prjCode: "PRJ-04"
+urlLabel: "academiax-tau.vercel.app"
+summary: "Rol bazlı (öğrenci/öğretmen/admin) üniversite bilgi sistemi — not, devam, danışmanlık ve canlı kampüs ring takibi."
+steps:
+  - label: "01 · KAPSAM"
+    title: "Uçtan uca üniversite bilgi sistemi"
+    body: "Ders yönetimi, not girişi, devam takibi, duyurular, danışmanlık mesajlaşması ve canlı kampüs ring takibi tek sistemde."
+  - label: "02 · YAKLAŞIM"
+    title: ".NET Web API + React"
+    body: "ASP.NET Core Web API + PostgreSQL backend, Redux Toolkit (RTK Query) ile React frontend; iki katmanlı yetkilendirme."
+  - label: "03 · SONUÇ"
+    title: "Rol bazlı, IDOR'a karşı sağlamlaştırılmış"
+    body: "Kaynak-sahipliği ve ders-sahipliği ayrı katmanlarda kontrol ediliyor; seed'li E2E test hesaplarıyla doğrulandı."
+---
+
+## Kapsam
+
+**AcademiaX**, bir üniversitenin günlük akademik operasyonunu Öğrenci, Öğretim Üyesi ve Yönetici rolleri üzerinden yöneten uçtan uca bir bilgi sistemi: ders yönetimi ve derse öğrenci ekleme, not girişi (sınav tipi bazlı) ve öğrencinin kendi notlarını görmesi, yoklama alma ve devam takibi, duyurular, öğrenci–danışman mesajlaşması, profil yönetimi ve rol bazlı ayrı dashboard'lar.
+
+Projenin öne çıkan tarafı, kampüs ring/ulaşım modülü: canlı durak ve sefer verisi (GTFS), öğrenci dashboard'unda "Sıradaki Sefer" widget'ı, harita üzerinde en yakın durağı bulma, favori durak işaretleme, rota planlayıcı ve yöneticiler için durak/sefer/zamanlama yönetimi.
+
+## Yaklaşım
+
+Backend **ASP.NET Core (.NET 7) Web API** + **Entity Framework Core** üzerine, **PostgreSQL** (Supabase, Npgsql provider) veritabanı ve **ASP.NET Identity + JWT** ile kimlik doğrulama olarak kuruldu. Frontend, **React 18** + **Redux Toolkit (RTK Query)** ile her modül için ayrı bir API slice (öğrenci, GTFS, duyuru vb.), **React Router** ve **Ant Design**'ın mor palete özel temalandırılmış bileşenleriyle; kampüs haritası **Leaflet** ile render ediliyor. Backend Render'da Docker ile, frontend Vercel'de, veritabanı Supabase'de (session pooler) barınıyor.
+
+Yetkilendirme iki katmanlı kuruldu: genel kullanıcı-sahipliği (IDOR koruması) ortak bir controller katmanında, ders-sahipliği ise ayrı bir servis-katmanı kontrolünde — böylece bir öğretmen yalnızca kendi verdiği derste not/yoklama işlemi yapabiliyor, yönetici bu kontrolü her zaman aşabiliyor.
+
+## Sonuç
+
+Üç rolün (öğrenci/öğretmen/admin) birbirinden net biçimde ayrıldığı, seed edilmiş E2E test hesaplarıyla uçtan uca doğrulanmış, canlı kampüs ulaşım takibiyle standart bir öğrenci bilgi sisteminin ötesine geçen bir proje.
